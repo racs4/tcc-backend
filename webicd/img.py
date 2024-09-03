@@ -2,19 +2,32 @@ from math import log
 import pathlib
 from random import seed
 from tkinter import image_names
-from webicd.recolorConfusionColorStrategies.genetic import GeneticRecolor
+from PIL import Image
+
+from webicd.recolor import Recolor
 from webicd.recolorStrategies.cluster import RecolorCluster
+from webicd.recolorConfusionColorStrategies.genetic import GeneticRecolor
 from webicd.recolorConfusionColorStrategies.random import RandomRecolor
 from webicd.findConfusionColorStrategies.graph import GraphGenerator
-from webicd.recolor import Recolor
 from webicd.getColorStrategies.cluster import Cluster
-from PIL import Image
-import sklearn.cluster
+
 import matplotlib.pyplot as plt
+import sklearn.cluster
 
 
 def recolor_image(image_name, algorithm, ellipse, confusion_point, luminances):
-    # print(f'Recoloring image {image_name} with algorithm {algorithm}')
+    """
+    Recolors an image using one of the two algorithms.
+    Args:
+        image_name (str): The name of the image to recolor.
+        algorithm (str): The algorithm to use. Either 'tcc' or 'original'.
+        ellipse (dict): The ellipse parameters.
+        confusion_point (dict): The confusion point parameters.
+        luminances (list): The luminance values.
+
+    Returns:
+        PIL.Image: The recolored image.
+    """
     image_dir = pathlib.Path('images')
 
     image = Image.open(image_dir.joinpath(

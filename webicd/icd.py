@@ -53,7 +53,14 @@ def differentiantion_ar(
     color,
     ar
 ):
-    return all(map(lambda x: differentiation(ellipse, confusion_point, luminances, color, x) > 1, ar)) # TODO ?
+    """
+    Returns True if the differentiation of the ellipse with the 
+    confusion point and the luminances is greater than 1 for all the colors in the array
+
+    Returns:
+       Boolean  
+    """
+    return all(map(lambda x: differentiation(ellipse, confusion_point, luminances, color, x) > 1, ar))
 
 
 def ellipse_contains(ellipse, point):

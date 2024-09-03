@@ -1,11 +1,21 @@
-from PIL import Image, ImageOps, ImageFilter
+from PIL import Image
+import numpy as np
+
 import scipy.cluster
 import sklearn.cluster
-import numpy as np
 import matplotlib.pyplot as plt
 
 
 def dominant_colors(image):  # PIL image input
+    """
+    Extracts the dominant colors from a given PIL image.
+
+    Args:
+        image (PIL.Image): The input image.
+
+    Returns:
+        list: A list of tuples representing the dominant colors in the image, in order of dominance.
+    """
     fig = plt.figure()
     ax = fig.add_subplot(projection='3d')
     # image = image.resize((150, 150))      # optional, to reduce time
